@@ -1,5 +1,7 @@
 public with sharing class ContactController {
-  @AuraEnabled(cacheable=true)
+
+  // 学習用メソッド
+  @AuraEnabled(Cacheable=true)
   public static List<Contact> getContactsBornAfter(Date birthDate) {
     return [
         SELECT Name, Title, Email, Phone
@@ -9,8 +11,8 @@ public with sharing class ContactController {
     ];
   }
 
-  @AuraEnabled(cacheable=true)
-  public static List<Contact> getContacts(){
+  @AuraEnabled(Cacheable=true)
+  public static List<Contact> getContacts() {
     return [
         SELECT FirstName, LastName, Email
         FROM Contact
