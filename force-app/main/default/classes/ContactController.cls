@@ -13,13 +13,9 @@ public with sharing class ContactController {
 
   @AuraEnabled(Cacheable=true)
   public static List<Contact> getContacts() {
-    try {
-      return [
-          SELECT FirstName, LastName, Email
-          FROM Contact
-      ];
-    } catch (Exception e) {
-      throw new Exception(e.getMessage());
-    }
+    return [
+        SELECT FirstName, LastName, Email
+        FROM Contact
+    ];
   }
 }
