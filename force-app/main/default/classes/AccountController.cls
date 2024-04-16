@@ -1,5 +1,5 @@
 public with sharing class AccountController {
-  @AuraEnabled(cacheable=true)
+  @AuraEnabled(Cacheable=true)
   public static List<Account> getAccounts() {
     return [
         SELECT Name, AnnualRevenue, Industry
