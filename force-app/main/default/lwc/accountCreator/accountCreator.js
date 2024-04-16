@@ -6,15 +6,15 @@ import REVENUE from '@salesforce/schema/Account.AnnualRevenue';
 import INDUSTRY from '@salesforce/schema/Account.Industry';
 
 export default class AccountCreator extends LightningElement {
-    objectApiName = ACCOUNT_OBJECT;
-    fields = [NAME, REVENUE, INDUSTRY];
+  objectApiName = ACCOUNT_OBJECT;
+  fields = [NAME, REVENUE, INDUSTRY];
 
-    handleSuccess(event) {
-        const toastEvent = new ShowToastEvent({
-            title: "Account created",
-            message: "Record ID: " + event.detail.id,
-            variant: "success"
-        });
-        this.dispatchEvent(toastEvent);
-    }
+  handleSuccess(event) {
+    const toastEvent = new ShowToastEvent({
+      title: "Account created",
+      message: "Record ID: " + event.detail.id,
+      variant: "success"
+    });
+    this.dispatchEvent(toastEvent);
+  }
 }
