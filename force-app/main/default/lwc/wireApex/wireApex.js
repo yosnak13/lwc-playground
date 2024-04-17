@@ -3,7 +3,7 @@
  */
 
 import {LightningElement, wire} from 'lwc';
-import getAccountList from '@salesforce/apex/AccountController.getAccountList';
+import getAccountList from '@salesforce/apex/AccountController.getAccountList'; // mockする。
 
 export default class WireApex extends LightningElement {
   accounts;
