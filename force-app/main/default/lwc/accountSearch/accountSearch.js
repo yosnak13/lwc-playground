@@ -3,10 +3,10 @@
  * https://trailhead.salesforce.com/ja/content/learn/modules/lwc-for-visualforce-developers/handle-user-actions-in-javascript?trail_id=build-lightning-web-components
  */
 
-import {LightningElement} from 'lwc';
+import {api, LightningElement} from 'lwc';
 
 export default class AccountSearch extends LightningElement {
-  numberOfEmployees = null;
+  @api numberOfEmployees = null;
 
   handleChange(event) {
     this.numberOfEmployees = event.detail.value;
