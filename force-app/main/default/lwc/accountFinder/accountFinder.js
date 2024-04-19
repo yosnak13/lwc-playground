@@ -6,7 +6,7 @@
 import {api, LightningElement} from 'lwc';
 
 export default class AccountFinder extends LightningElement {
-  @api annualRevenue = null
+  @api annualRevenue = null;
 
   handleChange(event) {
     this.annualRevenue = event.detail.value;
