@@ -6,8 +6,7 @@ import queryAccountsByRevenue from '@salesforce/apex/AccountListControllerLwc.qu
 const mockAccountsByRevenue = require('./data/queryAccountsByRevenue.json');
 
 jest.mock(
-  '@salesforce/apex/AccountListControllerLwc.queryAccountsByRevenue',
-  () => {
+  '@salesforce/apex/AccountListControllerLwc.queryAccountsByRevenue', () => {
     const {
       createApexTestWireAdapter
     } = require('@salesforce/sfdx-lwc-jest');
