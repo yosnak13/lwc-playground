@@ -18,4 +18,9 @@
         onclick={reset}>
     </lightning-button>
   </lightning-card>
+  <template lwc:if={accounts.data}>
+    <template for:each={accounts.data} for:item="account">
+      <p key={account.Id}>{account.Name}</p>
+    </template>
+  </template>
 </template>
