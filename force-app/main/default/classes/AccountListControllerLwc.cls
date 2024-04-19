@@ -10,5 +10,10 @@ public with sharing class AccountListControllerLwc {
         String.escapeSingleQuotes(annualRevenue.toString());
 
     return Database.query(query);
+    // MEMO: Trailhead合格用のクエリ。合格後は以下のクエリでなければ合格できない事実を残すため、コメントアウトしておく。
+    //    return [
+    //        SELECT Name FROM Account
+    //        WHERE AnnualRevenue >= :annualRevenue
+    //    ];
   }
 }
