@@ -19,4 +19,9 @@ export default class Numerator extends LightningElement {
     const factor = event.detail;
     this.counter *= factor;
   }
+
+  @api
+  maximizeCounter() {
+    this.counter += 1000000;
+  }
 }

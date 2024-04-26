@@ -58,4 +58,14 @@ describe('numerator', () => {
 
     expect(element.counter).toBe(2);
   });
+
+  it('success change counter property by maximizeCounter', () => {
+    const element = createElement('c-numerator', {
+      is: Numerator
+    });
+    document.body.appendChild(element);
+
+    element.maximizeCounter();
+    expect(element.counter).toBe(1000000)
+  });
 });
