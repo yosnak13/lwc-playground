@@ -26,16 +26,4 @@ describe('c-augmentor', () => {
     inputElement.dispatchEvent(new CustomEvent('change'));
     expect(ele.startCounter).toBe(parseInt(INPUT_VALUE));
   });
-
-  it('success set counter by child component', () => {
-    const ele = createElement('c-augment', {
-      is: Augmentor
-    });
-    document.body.appendChild(ele);
-
-    const buttonElement = ele.shadowRoot.querySelector('lightning-button');
-    buttonElement.click();
-
-    expect(ele.startCounter).toBe(1000000);
-  })
 });

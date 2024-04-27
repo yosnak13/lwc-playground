@@ -11,6 +11,11 @@ export default class Augmentor extends LightningElement {
     this.startCounter = parseInt(event.target.value);
   }
 
+  /*
+  * Trailheadでは子コンポーネントを呼び指すことが目的。
+  * c-numeratorコンポーネントのhtmlにメソッドの実装は行わないため、単体テストは作成してもmaximizeCounter()を呼び出せないことから、
+  * 単体テストは作成せず、動作確認をする
+  */
   handleMaximizeCounter() {
     this.template.querySelector('c-numerator').maximizeCounter();
   }
