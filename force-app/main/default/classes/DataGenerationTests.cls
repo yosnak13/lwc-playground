@@ -4,7 +4,19 @@
  */
 
 @IsTest
-public with sharing class DataGenerationTests {
+private with sharing class DataGenerationTests {
+  @TestSetup
+  static void dataCreation() {
+    // GIVEN
+    Account a = TestFactory.getAccount('Muddy Waters Inc.', true);
+    Contact c = TestFactory.getContact(a.Id, 'Muddy', 'Waters', true);
+    Opportunity opp = new Opportunity();
+    opp.Name = 'Long lost record';
+    opp.AccountId = a.Id;
+    opp.CloseDate = Date.today().addDays(14);
+    opp.StageName = 'prospecting';
+    insert opp;
+  }
 
   @IsTest
   static void testBruteForceAccountCreation() {
@@ -19,6 +31,14 @@ public with sharing class DataGenerationTests {
     Test.stopTest();
     // THEN
     Assert.isTrue(accts.size() > 0, 'Was expecting to find at least one account');
-    Assert.areEqual(5, contacts.size(), 'Was expecting to find 5 contacts');
+    Assert.areEqual(6, contacts.size(), 'Was expecting to find 6 contacts');
+  }
+
+  @IsTest
+  static void testAtTestSetupMethodsRule() {
+    // WHEN
+    List<Opportunity> opps = [SELECT Id, AccountId FROM Opportunity];
+    // THEN
+    Assert.areEqual(1, opps.size(), 'Expected test to find a single Opp');
   }
 }
