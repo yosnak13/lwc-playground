@@ -5,12 +5,12 @@
 @IsTest
 private class MyDataGenerationTests {
   @TestSetup
-  static void testLoadOtherAccountsFromStaticResource() {
+  static void loadTestData() {
     // GIVEN
     Test.loadData(Account.SObjectType, 'otherAccountData');
   }
   @IsTest
-  static void testLoadAccountsFromStaticResource() {
+  static void testLoadOtherAccountsFromStaticResource() {
     // WHEN
     List<Account> accts = [SELECT Id FROM Account];
     // THEN
