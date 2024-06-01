@@ -1,26 +1,24 @@
 public with sharing class AccountWrapper {
-  public class AWException extends exception {
+  public class AWException extends Exception {
   }
 
-  Account thisAccount;
+  final Account thisAccount;
 
   public AccountWrapper(Account startWith) {
     thisAccount = startWith;
   }
 
-  public decimal getRoundedAvgPriceOfOpps() {
+  public Decimal getRoundedAvgPriceOfOpps() {
     AggregateResult[] ar = [
-      SELECT AVG(Amount)
-      FROM Opportunity
-      WHERE accountId = :thisAccount.Id
-      WITH USER_MODE
+        SELECT AVG(Amount)
+        FROM Opportunity
+        WHERE AccountId = :thisAccount.Id
+        WITH USER_MODE
     ];
 
     Decimal average = (Decimal) ar[0].get('expr0');
     Long modulus = Math.mod(Integer.valueOf(average), 1000);
-    Decimal returnValue = (modulus >= 500)
-      ? (average + 1000) - modulus
-      : average - modulus;
+    Decimal returnValue = (modulus >= 500) ? (average + 1000) - modulus : average - modulus;
     if (returnValue <= 0) {
       throw new AWException('No won Opportunities');
     }
